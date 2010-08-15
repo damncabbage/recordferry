@@ -20,7 +20,7 @@ $rf->copyRows(
 		'dsn'       => 'mysql://host=localhost;dbname=rf_target',
 		'username'  => 'example',
 		'password'  => 'froghop',
-		'tablemap'	=> array('posts' => 'fox8_post'),
+		'tablemap'	=> array('posts' => 'tbl_post'),
 	)
 );
 
