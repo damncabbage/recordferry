@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+	<table name="list">
+		<column>id</column>
+		<column>title</column>
+		<column>created</column>
+		<column>content</column>
+		<row>
+			<value>1</value>
+			<value>New Post</value>
+			<value>2010-08-16 10:00:01</value>
+			<value>This is an item.</value>
+		</row>
+	</table>
+</dataset>
+

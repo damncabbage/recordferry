@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+	<table name="user">
+		<column>id</column>
+		<column>username</column>
+		<column>password_hash</column>
+		<column>password_salt</column>
+		<column>created</column>
+		<row>
+			<value>1</value>
+			<value>Sam</value>
+			<value>c80a97041f15ba166b9a3e8fc2b09726d778bc3bd9338d4befe34b46707ebeec</value>
+			<value>0b35c53b5</value>
+			<value>2010-08-16 10:00:01</value>
+		</row>
+		<row>
+			<value>2</value>
+			<value>Bob</value>
+			<value>175758398b473278ed930f7e266cf881db1c3918e7f1815169307b463613e426</value>
+			<value>5c53b5bf1</value>
+			<value>2010-08-17 12:00:01</value>
+		</row>
+		<row>
+			<value>3</value>
+			<value>Jim</value>
+			<value>58398b4732175778ed930f7e266cf881db1c3918e7f1815169307b463613e426</value>
+			<value>5bf15c53b</value>
+			<value>2010-08-17 14:00:01</value>
+		</row>
+	</table>
+	<table name="bookmark">
+		<column>id</column>
+		<column>user_id</column>
+		<column>uri</column>
+		<column>title</column>
+		<row>
+			<value>1</value>
+			<value>2</value>
+			<value>http://zombo.com</value>
+			<value>Anything Is Possible</value>
+		</row>
+		<row>
+			<value>2</value>
+			<value>3</value>
+			<value>http://trololololololololololo.com</value>
+			<value>Singing Lessons</value>
+		</row>
+	</table>
+	<table name="post">
+		<column>id</column>
+		<column>user_id</column>
+		<column>title</column>
+		<column>body</column>
+		<column>created</column>
+		<row>
+			<value>1</value>
+			<value>2</value>
+			<value>Hello World</value>
+			<value>Long-time reader, first-time poster. (Rob's first post.)</value>
+			<value>2010-08-20 10:00:01</value>
+		</row>
+		<row>
+			<value>2</value>
+			<value>2</value>
+			<value>Bob's Second Post</value>
+			<value>Second post content.</value>
+			<value>2010-08-20 11:00:01</value>
+		</row>
+		<row>
+			<value>3</value>
+			<value>1</value>
+			<value>Jim's First Post</value>
+			<value>Jimmy post content.</value>
+			<value>2010-08-20 12:00:01</value>
+		</row>
+	</table>
+	<table name="comment">
+		<column>id</column>
+		<column>post_id</column>
+		<column>body</column>
+		<column>created</column>
+		<row>
+			<value>1</value>
+			<value>1</value>
+			<value>A comment on the first post.</value>
+			<value>2010-08-20 10:30:01</value>
+		</row>
+		<row>
+			<value>2</value>
+			<value>1</value>
+			<value>Another comment on the first post.</value>
+			<value>2010-08-20 10:35:01</value>
+		</row>
+		<row>
+			<value>3</value>
+			<value>3</value>
+			<value>A comment on Jim's post.</value>
+			<value>2010-08-20 13:30:01</value>
+		</row>
+	</table>
+</dataset>
+

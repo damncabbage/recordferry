@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+	<table name="user">
+		<column>id</column>
+		<column>username</column>
+		<column>password_hash</column>
+		<column>password_salt</column>
+		<column>created</column>
+		<row>
+			<value>1</value>
+			<value>Sam</value>
+			<value>c80a97041f15ba166b9a3e8fc2b09726d778bc3bd9338d4befe34b46707ebeec</value>
+			<value>0b35c53b5</value>
+			<value>2010-08-16 10:00:01</value>
+		</row>
+		<row>
+			<value>2</value>
+			<value>Frank</value>
+			<value>278ed175758398b473930f7e266cf881db1c3918e7f1815169307b463613e426</value>
+			<value>3b5c55bf1</value>
+			<value>2010-08-17 11:00:01</value>
+		</row>
+	</table>
+	<table name="bookmark">
+		<column>id</column>
+		<column>user_id</column>
+		<column>uri</column>
+		<column>title</column>
+		<row>
+			<value>1</value>
+			<value>2</value>
+			<value>http://example.com</value>
+			<value>Boring</value>
+		</row>
+	</table>
+	<table name="post">
+		<column>id</column>
+		<column>user_id</column>
+		<column>title</column>
+		<column>body</column>
+		<column>created</column>
+		<row>
+			<value>1</value>
+			<value>2</value>
+			<value>A Boring Post</value>
+			<value>Grey and dull.</value>
+			<value>2010-08-20 10:30:01</value>
+		</row>
+	</table>
+</dataset>
+
