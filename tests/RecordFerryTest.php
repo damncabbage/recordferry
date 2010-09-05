@@ -1,5 +1,9 @@
 <?php
 
+// TODO: Move bootstrap elsewhere?
+set_include_path(get_include_path() . PATH_SEPARATOR . realpath(dirname(__FILE__).'/../library'));
+
+
 require_once 'PHPUnit/Framework.php';
 require_once 'PHPUnit/Extensions/Database/DefaultTester.php';
 require_once 'PHPUnit/Extensions/Database/DB/DefaultDatabaseConnection.php';
@@ -48,10 +52,18 @@ class RecordFerryTest extends PHPUnit_Framework_TestCase
 		$tester = $this->db[$db_name]['tester'];
 		$tester->setSetUpOperation(PHPUnit_Extensions_Database_Operation_Factory::CLEAN_INSERT());
 
-		$fixture_prefix = sprintf('%s/%s.%s', realpath(dirname(__FILE__).'/_fixtures'), $fixture_name, $db_name);
+		$fixture_prefix = sprintf('%s/%s.%s.%s', realpath(dirname(__FILE__).'/_fixtures'), get_class($this), $fixture_name, $db_name);
 
 		$table_sql = file_get_contents($fixture_prefix.'.sql');
-		$this->db[$db_name]['connection']->exec($table_sql);
+
+		// HACK: Incredibly hacky way to break up statements;
+		$table_sql_statements = explode(';', $table_sql);
+		foreach ($table_sql_statements as $statement) {
+			$sql = trim($statement);
+			if (!empty($sql)) {
+				$this->db[$db_name]['connection']->exec($sql);
+			}
+		}
 
 		$dataset = new PHPUnit_Extensions_Database_DataSet_XmlDataSet($fixture_prefix.'.xml');
 		$tester->setDataSet($dataset);
@@ -64,6 +76,34 @@ class RecordFerryTest extends PHPUnit_Framework_TestCase
 	public function testCopySingleIndependentRecord()
 	{
 		$this->setUpConnection('source')
-		     ->setUpFixture('source', 'SingleIndependentRecord');
+		     ->setUpFixture('source', __FUNCTION__);
+	}
+
+
+	public function testCopySingleDependentRecordWithDependencies()
+	{
+		$this->setUpConnection('source')
+		     ->setUpFixture('source', __FUNCTION__)
+		     ->setUpConnection('target')
+		     ->setUpFixture('target', __FUNCTION__);
+
+		require 'RecordFerry.php';
+		$rf = new RecordFerry;
+		$rf->copyRows(
+			array(
+				'dsn' => $this->db['source']['dsn'],
+				'username' => $this->db['source']['username'],
+				'password' => $this->db['source']['password'],
+				'table' => 'post',
+				'condition' => array('id' => 2),
+			),
+			array(
+				'dsn' => $this->db['source']['dsn'],
+				'username' => $this->db['source']['username'],
+				'password' => $this->db['source']['password'],
+			)
+		);
+
+
 	}
 }
